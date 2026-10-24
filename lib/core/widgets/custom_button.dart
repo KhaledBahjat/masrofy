@@ -12,7 +12,7 @@ class CustomButton extends StatelessWidget {
   final double? height;
   final Widget? icon;
   final bool isDisabled;
-
+  final TextStyle textStyle;
   const CustomButton({
     super.key,
     required this.text,
@@ -22,22 +22,21 @@ class CustomButton extends StatelessWidget {
     this.width,
     this.height,
     this.icon,
-    this.isDisabled = false,
+    this.isDisabled = false, required this.textStyle,
   });
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    
+
     return SizedBox(
       width: width ?? double.infinity,
-      height: height ?? AppSizes.buttonM ,
+      height: height ?? AppSizes.buttonM,
       child: _buildButton(theme),
     );
   }
 
   Widget _buildButton(ThemeData theme) {
-    
     switch (variant) {
       case ButtonVariant.primary:
         return ElevatedButton(
@@ -109,7 +108,7 @@ class CustomButton extends StatelessWidget {
           icon!,
           SizedBox(width: AppSizes.s),
         ],
-        Text(text),
+        Text(text,style: textStyle,),
       ],
     );
   }

@@ -3,6 +3,7 @@ import 'package:easy_localization/easy_localization.dart' as appTitle;
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
+import 'package:masrofy/core/extensions/build_context.dart';
 import 'package:masrofy/core/routing/app_routs.dart';
 import 'package:masrofy/core/routing/routs.dart';
 import 'package:masrofy/core/theme/app_sizes.dart';
@@ -20,7 +21,7 @@ class MyApp extends StatelessWidget {
       builder: (context, child) {
         return MaterialApp.router(
           routerConfig: appRouter,
-          locale: context.locale,
+          locale: Locale('ar'),
           supportedLocales: context.supportedLocales,
           localizationsDelegates: context.localizationDelegates,
           debugShowCheckedModeBanner: false,
@@ -55,6 +56,7 @@ class HomePage extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(20),
               child: CustomButton(
+                textStyle: TextStyle(),
                 text: "changeLanguage".tr(),
                 onPressed: () {
                   context.setLocale(
@@ -75,6 +77,7 @@ class HomePage extends StatelessWidget {
               },
               variant: ButtonVariant.primary,
               icon: Icon(Icons.settings),
+              textStyle: context.textTheme.titleLarge!,
             ),
           ],
         ),
